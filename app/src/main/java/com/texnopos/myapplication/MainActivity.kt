@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.PopupMenu
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val adapter: ListAdapter = ListAdapter(this)
-    private val models: MutableList<User> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +19,12 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        setData(0, 1)
+        setData(1)
     }
 
-    private fun setData(size: Int, count: Int) {
-        for(i in size until count+size) {
+    private fun setData(count: Int) {
+        val models: MutableList<User> = mutableListOf()
+        for(i in 0 until count) {
             val model = User()
             model.title = "Title ${i+1}"
             model.description = "Description ${i+1}"
@@ -33,21 +33,29 @@ class MainActivity : AppCompatActivity() {
         adapter.setData(models)
     }
 
-    fun onItemClicked(size: Int, position: Int) {
-        setData(size, position+1)
-    }
-
-    fun onOptionsButtonClick(view: View) {
+    fun onOptionsButtonClick(view: View, position: Int) {
         val optionsMenu = PopupMenu(this, view)
         val menuInflater = optionsMenu.menuInflater
         menuInflater.inflate(R.menu.menu_item_options, optionsMenu.menu)
         optionsMenu.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.itemAdd -> {
-
+                    adapter.addUser(position+1)
                 }
                 R.id.itemDelete -> {
-                    Toast.makeText(this, "ItemDeleteClicked", Toast.LENGTH_LONG).show()
+                    val dialog = AlertDialog.Builder(this)
+                        .setTitle("Anıq óshirejaqsańba?")
+                        .setMessage("Eger bul itemdı óshirseńiz onı qayta tikley almaysız")
+                        .setPositiveButton("Awa"
+                        ) { dialog, which ->
+                            adapter.removeUser(position)
+                        }
+                        .setNegativeButton("Yaq") {
+                            dialog, which ->
+                            dialog.dismiss()
+                        }
+                    dialog.show()
+
                 }
             }
             return@setOnMenuItemClickListener true

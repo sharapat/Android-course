@@ -12,11 +12,8 @@ class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun populateModel(user: User, size: Int, position: Int, activity: MainActivity) {
         tvTitle.text = user.title
         tvDescription.text = user.description
-        itemView.setOnClickListener {
-            activity.onItemClicked(size, position)
-        }
         itemView.btnOptions.setOnClickListener {
-            activity.onOptionsButtonClick(itemView.btnOptions)
+            activity.onOptionsButtonClick(itemView.btnOptions, position)
         }
     }
 }
