@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity() {
         optionsMenu.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.itemAdd -> {
-                    adapter.addUser(position+1)
+                    val dialog = CustomDialog(this, this)
+                    dialog.show()
                 }
                 R.id.itemDelete -> {
                     val dialog = AlertDialog.Builder(this)
