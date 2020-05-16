@@ -4,5 +4,9 @@
     <string name="delete">Delete</string>
     <string name="cancel">cancel</string>
     <string name="select">OK</string>
+    <string name="ads">Реклама</string>
+    <string name="kongfu_panda">KongFu Panda</string>
+    <string name="kongfu_panda_description">KongFu Panda Description</string>
+    <string name="families_are_an_integral_part_of_one_s_life_it_does_not_matter_if_you_have_a_small_or_big_family_as_long_as_you_have_one_a_family_serves_as_the_first_school_to_the_child_where_one_learns_about_various_things">Families are an integral part of one’s life. It does not matter if you have a small or big family, as long as you have one. A family serves as the first school to the child where one learns about various things.</string>
 
 </resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ivPost"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/happyfamily"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/btnLike"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/ivPost"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:src="@drawable/like"/>
+
+    <ImageView
+        android:id="@+id/btnDislike"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/ivPost"
+        app:layout_constraintStart_toEndOf="@id/btnLike"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:src="@drawable/dislike"/>
+
+    <TextView
+        android:id="@+id/tvPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/families_are_an_integral_part_of_one_s_life_it_does_not_matter_if_you_have_a_small_or_big_family_as_long_as_you_have_one_a_family_serves_as_the_first_school_to_the_child_where_one_learns_about_various_things"
+        app:layout_constraintTop_toBottomOf="@id/btnLike"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/margin_standard"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
