@@ -7,32 +7,25 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val adapter: MyAdapter = MyAdapter()
+    private val myAdapter: PostListAdapter = PostListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerView.adapter = myAdapter
         setData()
     }
 
     private fun setData() {
-        val models: MutableList<ListItem> = mutableListOf()
-        for(i in 1..100) {
-            if (i%5==0) {
-                val reklama = Ad(ListItem.AD_TYPE, "", "", "")
-                models.add(reklama)
-            } else {
-                val posts : MutableList<Post> = mutableListOf()
-                for(j in 1..10) {
-                    val post = Post("", "")
-                    posts.add(post)
-                }
-                val postList = PostList(ListItem.POST_TYPE, posts)
-                models.add(postList)
+        val models: MutableList<List<Post>> = mutableListOf()
+        for(i in 1..10) {
+            val postList: MutableList<Post> = mutableListOf()
+            for(i in 1..20) {
+                postList.add(Post(i, "I am Post", "Description $i"))
             }
+            models.add(postList)
         }
-        adapter.models = models
+        myAdapter.models = models
     }
+
 }
